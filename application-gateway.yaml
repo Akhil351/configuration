@@ -2,15 +2,12 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: product-service
-          uri: lb://PRODUCT-SERVICE
+        - id: PRODUCT-CATALOG-SERVICE
+          uri: lb://PRODUCT-CATALOG-SERVICE
           predicates:
-            - Path=/api/v2/products/**
-            - Path=/api/v2/categories/**
-            - Path=/api/v2/images/**
+            - Path=/api/v2/products/**,/api/v2/categories/**,/api/v2/images/**
 
-        - id: ecommerce-service
+        - id: ECOMMERCE-SERVICE
           uri: lb://ECOMMERCE-SERVICE
           predicates:
-            - Path=/api/v2/carts/**
-            - Path=/api/v2/cartItems/**
+            - Path=/api/v2/carts/**,/api/v2/cartItems/**
