@@ -11,3 +11,10 @@ spring:
           uri: lb://ECOMMERCE-SERVICE
           predicates:
             - Path=/api/v2/carts/**,/api/v2/cartItems/**,/api/v2/orders/**
+
+        - id: LOGIN-SERVICE
+          uri: lb://LOGIN-SERVICE
+          predicates:
+            - Path=/api/v2/auth/**,/api/v2/users/**
+
+        
