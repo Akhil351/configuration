@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/akhil
-    username: root
+    url: jdbc:postgresql://localhost:5432/akhil
+    username: postgres  
     password: Eshwar@351
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
