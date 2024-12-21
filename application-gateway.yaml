@@ -18,11 +18,12 @@ spring:
             - Path=/api/v2/auth/**,/api/v2/users/**
 
       default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - DedupeResponseHeader=Access-Control-Allow-Credentials
+        - DedupeResponseHeader=Access-Control-Allow-Origin
 
       globalcors:
         corsConfigurations:
-          '[/**]':
+          '/**': 
             allowedOrigins:
               - "https://localhost:5173"  
             allowedMethods:
@@ -30,9 +31,9 @@ spring:
               - POST
               - PUT
               - PATCH
-              - DELETE 
+              - DELETE
             allowedHeaders:
               - "Content-Type"
               - "Authorization"  
             allowCredentials: true
-            maxAge: 3600  
+            maxAge: 3600 
