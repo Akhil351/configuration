@@ -6,15 +6,28 @@ spring:
           uri: lb://PRODUCT-CATALOG-SERVICE
           predicates:
             - Path=/api/v2/products/**,/api/v2/categories/**,/api/v2/images/**
+          filters:
+            - name: CORS_FILTER 
 
         - id: ECOMMERCE-SERVICE
           uri: lb://ECOMMERCE-SERVICE
           predicates:
             - Path=/api/v2/carts/**,/api/v2/cartItems/**,/api/v2/orders/**
+          filters:
+            - name: CORS_FILTER 
 
         - id: LOGIN-SERVICE
           uri: lb://LOGIN-SERVICE
           predicates:
             - Path=/api/v2/auth/**,/api/v2/users/**
+          filters:
+            - name: CORS_FILTER 
 
-        
+      default-filters:
+        - name: CORS_FILTER
+          args:
+            allowedOrigins: "http://localhost:5173"
+            allowedMethods: "GET,POST,PUT,DELETE"
+            allowedHeaders: "Content-Type,Authorization"
+            allowCredentials: "true"
+            maxAge: 3600
