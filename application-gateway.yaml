@@ -6,25 +6,33 @@ spring:
           uri: lb://PRODUCT-CATALOG-SERVICE
           predicates:
             - Path=/api/v2/products/**,/api/v2/categories/**,/api/v2/images/**
-           
-
+          
         - id: ECOMMERCE-SERVICE
           uri: lb://ECOMMERCE-SERVICE
           predicates:
             - Path=/api/v2/carts/**,/api/v2/cartItems/**,/api/v2/orders/**
-          
 
         - id: LOGIN-SERVICE
           uri: lb://LOGIN-SERVICE
           predicates:
             - Path=/api/v2/auth/**,/api/v2/users/**
-          
 
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
       globalcors:
         corsConfigurations:
           '[/**]':
-              allowedOrigins: "*"
-              allowedMethods: "*"
-              allowedHeaders: "*"
+            allowedOrigins:
+              - "https://localhost:5173"  
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE 
+            allowedHeaders:
+              - "Content-Type"
+              - "Authorization"  
+            allowCredentials: true
+            maxAge: 3600  
